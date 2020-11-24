@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgapps"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="92dp"
+        android:layout_height="92dp"
+        android:layout_alignParentRight="true"
+        app:srcCompat="@drawable/womancurly" />
+
+    <ImageButton
+        android:id="@+id/avatarButton"
+        android:layout_width="135dp"
+        android:layout_height="129dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="370dp"
+        android:layout_marginLeft="35dp"
+        android:src="@drawable/womancurly"
+        android:contextClickable="true" />
+
+    <TextView
+        android:id="@+id/woman"
+        android:layout_width="130dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="38sp"
+        android:layout_marginTop="495dp"
+        android:background="#FFF"
+        android:text="AVATAR"
+        android:textSize="25dp"
+        android:textColor="#FFA000"
+        android:textAlignment="center"/>
+
+    <ImageButton
+        android:id="@+id/gameButton"
+        android:layout_width="135dp"
+        android:layout_height="129dp"
+        android:layout_marginTop="370dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/game"
+        android:contextClickable="true" />
+
+    <TextView
+        android:id="@+id/game"
+        android:layout_width="130dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="235dp"
+        android:layout_marginTop="495dp"
+        android:background="#FFF"
+        android:text="GAMES"
+        android:textSize="25dp"
+        android:textColor="#FFA000"
+        android:textAlignment="center"/>
+
+    <ImageButton
+        android:id="@+id/photoButton"
+        android:layout_width="135dp"
+        android:layout_height="129dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="370dp"
+        android:layout_marginRight="35dp"
+        android:src="@drawable/picture"
+        android:contextClickable="true" />
+
+    <TextView
+        android:id="@+id/picture"
+        android:layout_width="130dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="432dp"
+        android:layout_marginTop="495dp"
+        android:background="#FFF"
+        android:text="PHOTOS"
+        android:textSize="25dp"
+        android:textColor="#FFA000"
+        android:textAlignment="center"/>
+
+
+    <ImageButton
+        android:id="@+id/activityButton"
+        android:layout_width="400dp"
+        android:layout_height="190dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="570dp"
+        app:srcCompat="@drawable/oceannn"
+        android:contextClickable="true" />
+
+    <TextView
+        android:id="@+id/ocean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="640dp"
+        android:text="START ACTIVITIES!"
+        android:textSize="30dp"
+        android:textColor="#FFF"
+        android:textAlignment="center"/>
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="250dp"
+        android:layout_height="298dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="25dp"
+        android:background="#FFA000" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="210dp"
+        android:layout_height="92dp"
+        android:layout_marginLeft="301dp"
+        android:layout_marginTop="0dp"
+        android:background="#FFF"
+        android:text="Welcome!"
+        android:textSize="35dp"
+        android:textColor="#FFA000"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/weather"
+        android:layout_width="40sp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginTop="41dp"
+        app:srcCompat="@drawable/partlycloudy"/>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        app:srcCompat="@drawable/fish" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="169dp"
+        android:layout_height="157dp"
+        android:background="#fe104d"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="140dp" />
+</RelativeLayout>
+
+
