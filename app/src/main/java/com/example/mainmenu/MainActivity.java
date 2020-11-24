@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         avatarButton.setOnClickListener(this);
         photoButton.setOnClickListener(this);
         activityButton.setOnClickListener(this);
+        //changes
 
 
     }
