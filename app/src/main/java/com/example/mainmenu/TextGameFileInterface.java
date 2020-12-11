@@ -1,72 +1,60 @@
 package com.example.mainmenu;
 
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.os.Environment;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
 
-public class TextGameFileInterface {
-
+public class TextGameFileInterface extends AppCompatActivity {
+    //Attributes
+    Context context;
     //Constructor
-    public TextGameFileInterface(){
+    public TextGameFileInterface(Context inputContext) {
 
+        context = inputContext;
     }
 
-    //Attributes
 
     //Methods
 
     /**
-     *
-     * @param difficulty
+     * @param textFile
      * @return
-     * @throws FileNotFoundException
-     * Accepts an Input File where there is one word on each line and
-     * returns an ArrayList of those words
      */
-    public ArrayList<String> parseFileRand(int difficulty){
+    public ArrayList<String> parseFile(InputStream textFile) {
         ArrayList<String> words = new ArrayList<String>();
-        File[] paths;
-        Random rand = new Random();
-        try{
-            File dir = new File(Environment.getExternalStorageDirectory() + File.separator + "TestGames" + File.separator + "Game1");
-            paths = dir.listFiles();
-            if(paths == null){
-                System.out.println("IM NULL");
-            }else {
-                File randomFile = paths[rand.nextInt(paths.length)];
-                Scanner fileScanner = new Scanner(randomFile);
-                while (fileScanner.hasNextLine()) {
-                    words.add(fileScanner.nextLine());
+        char[] wordArray = new char[100];
+        int index = 0;
+        try {
+            AssetManager am = this.getAssets();
+            try {
+                //InputStream textFile = am.open(fileName);
+                //read until end of file
+                while (textFile.read() != -1) {
+                    //read a byte from the stream until new line
+                    while (textFile.read() != 10) {
+                        wordArray[index] = (char) textFile.read();
+                        index++;
+                    }
+                    //add the word to the word array
+                    words.add(wordArray.toString());
+                    //clear word
+                    wordArray = null;
                 }
-                for (File path : paths) {
-                    System.out.println(path);
-                }
+                textFile.close();
+            } catch (IOException e) {
+                System.out.println(e);
             }
-
-        }catch (FileNotFoundException e){
-            System.out.println(e);
+        } catch(Exception e) {
+            e.printStackTrace();
+            System.out.println("HERE!");
         }
-        return words;
-    }
 
-    public ArrayList<String> parseFile(String fileName){
-        ArrayList<String> words = new ArrayList<String>();
-        try{
-            File textFile = new File(fileName);
-            if(textFile.exists()){
-                Scanner sc = new Scanner(textFile);
-                while (sc.hasNextLine()){
-                    System.out.println(sc.nextLine());
-                    words.add(sc.nextLine());
-                }
-            }
-        }catch(FileNotFoundException e){
-            System.out.println("File not found");
-        }
         return words;
     }
 }

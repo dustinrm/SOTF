@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AssetManager am = this.getAssets();
+        System.out.println("Here" + this.getAssets().getLocales().toString());
         // Defining Buttons
         gameButton = (ImageButton) findViewById(R.id.gameButton);
         avatarButton = (ImageButton) findViewById(R.id.avatarButton);

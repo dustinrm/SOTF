@@ -10,5 +10,6 @@ public class Photos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photos);
+        System.out.println("Here" + this.getAssets().getLocales().toString());
     }
 }

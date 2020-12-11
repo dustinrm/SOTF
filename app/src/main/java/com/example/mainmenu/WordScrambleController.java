@@ -1,5 +1,7 @@
 package com.example.mainmenu;
 
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,9 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
@@ -23,30 +28,40 @@ public class WordScrambleController extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_scramble);
         WordScrambleGame game = new WordScrambleGame();
-        TextGameFileInterface fileInterface = new TextGameFileInterface();
+
+        //creating word Array
         ArrayList<String> words = new ArrayList<String>();
+        String fileName = "Animals.txt";
+        AssetManager am = getApplicationContext().getAssets();
+        try {
+            InputStream in = am.open(fileName);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
+            while(bufferedReader.readLine() != null){
+                words.add(bufferedReader.readLine());
+            }
+        }catch (Exception e){
+            System.out.println("Failed to open input stream.");
+        }
+
+
+        //creating letters
         ArrayList<String> letters = new ArrayList<String>();
-        String fileName = "fruits";
-        //temporary until file system is figured out
-        words.add("apple");
-        words.add("banana");
-        words.add("orange");
-        words.add("mango");
-        words.add("melon");
-        words.add("strawberry");
-        words.add("pineapple");
-        words.add("kiwi");
+        //chooses selected amount of words from total list of words
         words = game.chooseWords(4, words);
+        //scrambles letters from those selected words
         letters = game.scrambleWords(words);
+        //display letters
         TextView catText = (TextView) findViewById(R.id.category1TextView);
         catText.setText(fileName);
         GridView letterGrid = (GridView) findViewById(R.id.letterGrid);
         int matrixSize = game.matrixSize(letters);
-        letterGrid.setNumColumns(matrixSize);
+        letterGrid.setNumColumns((int) (Math.sqrt(matrixSize)));
         letterGrid.setColumnWidth(200);
         letterGrid.setStretchMode(GridView.STRETCH_SPACING_UNIFORM);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(WordScrambleController.this, android.R.layout.simple_list_item_1,letters);
         letterGrid.setAdapter(arrayAdapter);
+
+        //game functionality on button click
         Button chkBtn = (Button) findViewById(R.id.chkBtn);
         ArrayList<String> finalWords = words;
         chkBtn.setOnClickListener(new View.OnClickListener() {
