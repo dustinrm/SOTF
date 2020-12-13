@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class WordScrambleGame {
+public class WordScrambleGame implements GameInterface {
     //Constructor
     public WordScrambleGame(){
 
@@ -13,7 +13,6 @@ public class WordScrambleGame {
 
     //Methods
     public ArrayList<String> chooseWords(int wordNum, ArrayList<String> words){
-        System.out.println(words);
         Collections.shuffle(words);
         ArrayList<String> selectedWords =  new ArrayList<String>(words.subList(0,wordNum-1));
         return selectedWords;
@@ -52,4 +51,13 @@ public class WordScrambleGame {
         return letters;
     }
 
+    @Override
+    public int[] ParseMetrics(int[] metrics) {
+        return new int[0];
+    }
+
+    @Override
+    public int[] TranslateMetrics(int[] values) {
+        return new int[0];
+    }
 }

@@ -1,149 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgapps"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="92dp"
-        android:layout_height="92dp"
-        android:layout_alignParentRight="true"
-        app:srcCompat="@drawable/womancurly" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/avatarButton"
-        android:layout_width="135dp"
-        android:layout_height="129dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="370dp"
-        android:layout_marginLeft="35dp"
-        android:src="@drawable/womancurly"
-        android:contextClickable="true" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/woman"
-        android:layout_width="130dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="38sp"
-        android:layout_marginTop="495dp"
-        android:background="#FFF"
-        android:text="AVATAR"
-        android:textSize="25dp"
-        android:textColor="#FFA000"
-        android:textAlignment="center"/>
-
-    <ImageButton
-        android:id="@+id/gameButton"
-        android:layout_width="135dp"
-        android:layout_height="129dp"
-        android:layout_marginTop="370dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/game"
-        android:contextClickable="true" />
-
-    <TextView
-        android:id="@+id/game"
-        android:layout_width="130dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="235dp"
-        android:layout_marginTop="495dp"
-        android:background="#FFF"
-        android:text="GAMES"
-        android:textSize="25dp"
-        android:textColor="#FFA000"
-        android:textAlignment="center"/>
-
-    <ImageButton
-        android:id="@+id/photoButton"
-        android:layout_width="135dp"
-        android:layout_height="129dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="370dp"
-        android:layout_marginRight="35dp"
-        android:src="@drawable/picture"
-        android:contextClickable="true" />
-
-    <TextView
-        android:id="@+id/picture"
-        android:layout_width="130dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="432dp"
-        android:layout_marginTop="495dp"
-        android:background="#FFF"
-        android:text="PHOTOS"
-        android:textSize="25dp"
-        android:textColor="#FFA000"
-        android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/text_view_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="DATE"
+                android:textSize="30dp"
+                android:textColor="#FFF"/>
 
 
-    <ImageButton
-        android:id="@+id/activityButton"
-        android:layout_width="400dp"
-        android:layout_height="190dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="570dp"
-        app:srcCompat="@drawable/oceannn"
-        android:contextClickable="true" />
-
-    <TextView
-        android:id="@+id/ocean"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="640dp"
-        android:text="START ACTIVITIES!"
-        android:textSize="30dp"
-        android:textColor="#FFF"
-        android:textAlignment="center"/>
-
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="250dp"
-        android:layout_height="298dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
-        android:background="#FFA000" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="210dp"
-        android:layout_height="92dp"
-        android:layout_marginLeft="301dp"
-        android:layout_marginTop="0dp"
-        android:background="#FFF"
-        android:text="Welcome!"
-        android:textSize="35dp"
-        android:textColor="#FFA000"
-        android:textAlignment="center" />
-
-    <ImageView
-        android:id="@+id/weather"
-        android:layout_width="40sp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="400dp"
-        android:layout_marginTop="41dp"
-        app:srcCompat="@drawable/partlycloudy"/>
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        app:srcCompat="@drawable/fish" />
-
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="169dp"
-        android:layout_height="157dp"
-        android:background="#fe104d"
-        android:layout_marginLeft="350dp"
-        android:layout_marginTop="140dp" />
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_alignParentRight="true"
+                app:srcCompat="@drawable/agenticon" />
 
 
+
+        </RelativeLayout>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"/>
+
+        <GridLayout
+            android:columnCount="1"
+            android:rowCount="1"
+            android:alignmentMode="alignMargins"
+            android:columnOrderPreserved="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="6"
+                android:layout_rowWeight="6"
+                app:cardElevation="10dp"
+                app:cardCornerRadius="15dp"
+                >
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="35dp"
+                    android:gravity="center">
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Welcome, NAME! You have 5 out of 5 activities left."
+                    android:textSize="26dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentRight="true"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+
+        </GridLayout>
+
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"/>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rowCount="3"
+            android:columnCount="3"
+            android:layout_gravity="center"
+
+            >
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                app:cardUseCompatPadding="true"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp">
+
+                    <ImageButton
+                        android:id="@+id/avatarButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/agenticon"
+                        android:contextClickable="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AVATAR"
+                        android:textColor="@android:color/black"
+                        android:textSize="30sp"/>
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                app:cardUseCompatPadding="true"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    >
+
+                    <ImageButton
+                        android:id="@+id/gameButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/calcuationsicon"
+                        android:contextClickable="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GAMES"
+                        android:textColor="@android:color/black"
+                        android:textSize="30sp"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                app:cardUseCompatPadding="true"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    >
+
+                    <ImageButton
+                        android:id="@+id/photoButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/imageicon" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PHOTOS"
+                        android:textColor="@android:color/black"
+                        android:textSize="30sp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"/>
+
+        </GridLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+            <ImageButton
+                android:id="@+id/activityButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="2dp"
+                android:contextClickable="true"
+                app:srcCompat="@drawable/startactivitybutton" />
+
+
+        </RelativeLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="Family Log-In"
+                    />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
