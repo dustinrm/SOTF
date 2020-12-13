@@ -36,9 +36,10 @@ public class WordScrambleController extends AppCompatActivity {
         ArrayList<String> fileNames = new ArrayList<String>();
         fileNames.add("Animals.txt");
         fileNames.add("Fruits.txt");
+        fileNames.add("Instruments.txt");
+        fileNames.add("Sports.txt");
         String fileName = fileNames.get(random.nextInt(fileNames.size()));
         AssetManager am = getApplicationContext().getAssets();
-        String[] locales = am.getLocales();
         try {
             InputStream in = am.open(fileName);
             String line;
