@@ -6,8 +6,12 @@ import android.os.Environment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
 import java.util.ArrayList;
 
 public class TextGameFileInterface extends AppCompatActivity {
@@ -23,38 +27,25 @@ public class TextGameFileInterface extends AppCompatActivity {
     //Methods
 
     /**
-     * @param textFile
+     * @param fileName
      * @return
      */
-    public ArrayList<String> parseFile(InputStream textFile) {
+    public ArrayList<String> parseFile(String fileName) {
         ArrayList<String> words = new ArrayList<String>();
-        char[] wordArray = new char[100];
-        int index = 0;
-        try {
-            AssetManager am = this.getAssets();
-            try {
-                //InputStream textFile = am.open(fileName);
-                //read until end of file
-                while (textFile.read() != -1) {
-                    //read a byte from the stream until new line
-                    while (textFile.read() != 10) {
-                        wordArray[index] = (char) textFile.read();
-                        index++;
-                    }
-                    //add the word to the word array
-                    words.add(wordArray.toString());
-                    //clear word
-                    wordArray = null;
-                }
-                textFile.close();
-            } catch (IOException e) {
-                System.out.println(e);
+        AssetManager am = context.getAssets();
+        String line;
+        try{
+            InputStream inputStream = am.open(fileName);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            while ((line = bufferedReader.readLine()) != null){
+                words.add(line);
             }
-        } catch(Exception e) {
-            e.printStackTrace();
-            System.out.println("HERE!");
+            bufferedReader.close();
+        }catch (IOException ex){
+            ex.printStackTrace();
+            System.out.println("Class: TextGameFileInterface Method: parseFile");
         }
-
+        System.out.println(words);
         return words;
     }
 }

@@ -1,37 +1,51 @@
 package com.example.mainmenu;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
 public class WordScrambleGame implements GameInterface {
-    //Constructor
-    public WordScrambleGame(){
-
-    }
     //Attributes
+    private ArrayList<String> words = new ArrayList<String>();
+    private ArrayList<String> fileNames = new ArrayList<String>();
+    private ArrayList<String> letters = new ArrayList<String>();
+    private  ArrayList<String> finalWords = new ArrayList<String>();
+    private String fileName;
+    Context context;
+    Random random = new Random();
+    TextGameFileInterface textGameFileInterface;
+    //Constructor
+    public WordScrambleGame(Context inputContext){
+        getFileNames().add("Animals.txt");
+        getFileNames().add("Fruits.txt");
+        getFileNames().add("Instruments.txt");
+        getFileNames().add("Sports.txt");
+        this.fileName = getFileNames().get(random.nextInt(getFileNames().size()));
+        this.textGameFileInterface = new TextGameFileInterface(inputContext);
+        this.words = textGameFileInterface.parseFile(fileName);
+        this.context = inputContext;
+    }
 
     //Methods
-    public ArrayList<String> chooseWords(int wordNum, ArrayList<String> words){
-        Collections.shuffle(words);
-        ArrayList<String> selectedWords =  new ArrayList<String>(words.subList(0,wordNum-1));
-        return selectedWords;
+    public void chooseWords(int wordNum){
+        Collections.shuffle(this.getWords());
+        this.finalWords =  new ArrayList<String>(words.subList(0,wordNum-1));
     }
 
-    public ArrayList<String> scrambleWords(ArrayList<String> selectedWords){
+    public void scrambleWords(){
         //make an array list where each word is broken down into its letters then scrambled
-        ArrayList<String> letters = new ArrayList<String>();
-        for (String word:selectedWords) {
+        for (String word:this.finalWords) {
             for(int i = 0; i < word.length(); i++){
-                letters.add(word.substring(i, i + 1));
+                this.letters.add(word.substring(i, i + 1));
             }
         }
-        Collections.shuffle(letters);
-        return letters;
+        Collections.shuffle(this.letters);
     }
 
-    public boolean checkWord(String inputWord, ArrayList<String> words){
-        return(words.contains(inputWord));
+    public boolean checkWord(String inputWord){
+        return(finalWords.contains(inputWord));
     }
 
     public int matrixSize(ArrayList<String> letters){
@@ -59,5 +73,21 @@ public class WordScrambleGame implements GameInterface {
     @Override
     public int[] TranslateMetrics(int[] values) {
         return new int[0];
+    }
+
+    public ArrayList<String> getWords() {
+        return words;
+    }
+
+    public ArrayList<String> getFileNames() {
+        return fileNames;
+    }
+
+    public ArrayList<String> getLetters() {
+        return letters;
+    }
+
+    public String getFilename() {
+        return fileName;
     }
 }

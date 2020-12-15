@@ -29,60 +29,30 @@ public class WordScrambleController extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_scramble);
-        WordScrambleGame game = new WordScrambleGame();
-        Random random = new Random();
-        //creating word Array
-        ArrayList<String> words = new ArrayList<String>();
-        ArrayList<String> fileNames = new ArrayList<String>();
-        fileNames.add("Animals.txt");
-        fileNames.add("Fruits.txt");
-        fileNames.add("Instruments.txt");
-        fileNames.add("Sports.txt");
-        String fileName = fileNames.get(random.nextInt(fileNames.size()));
-        AssetManager am = getApplicationContext().getAssets();
-        try {
-            InputStream in = am.open(fileName);
-            String line;
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
-            while((line = bufferedReader.readLine()) != null){
-                words.add(line);
-            }
-            System.out.println(words);
-            bufferedReader.close();
-        }catch (Exception e){
-            System.out.println("Failed to open input stream.");
-        }
-
-
-        //creating letters
-        ArrayList<String> letters = new ArrayList<String>();
+        WordScrambleGame game = new WordScrambleGame(this);
         //chooses selected amount of words from total list of words
-        words = game.chooseWords(4, words);
-        System.out.println(words);
+        game.chooseWords(4);
         //scrambles letters from those selected words
-        letters = game.scrambleWords(words);
+        game.scrambleWords();
         //display letters
         TextView catText = (TextView) findViewById(R.id.category1TextView);
-        catText.setText(fileName);
+        catText.setText(game.getFilename());
         GridView letterGrid = (GridView) findViewById(R.id.letterGrid);
-        int matrixSize = game.matrixSize(letters);
-        letterGrid.setNumColumns((int) (Math.sqrt(matrixSize)));
+        letterGrid.setNumColumns((int) (Math.sqrt(game.matrixSize(game.getLetters()))));
         letterGrid.setColumnWidth(200);
         letterGrid.setStretchMode(GridView.STRETCH_SPACING_UNIFORM);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(WordScrambleController.this, android.R.layout.simple_list_item_1,letters);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(WordScrambleController.this, android.R.layout.simple_list_item_1,game.getLetters());
         letterGrid.setAdapter(arrayAdapter);
 
         //game functionality on button click
         Button chkBtn = (Button) findViewById(R.id.chkBtn);
-        ArrayList<String> finalWords = words;
         chkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText typedWord = (EditText) findViewById(R.id.typedWord);
                 TextView chkResponse = (TextView) findViewById(R.id.chkResponse);
-                if(game.checkWord(typedWord.getText().toString(), finalWords)){
+                if(game.checkWord(typedWord.getText().toString())){
                     chkResponse.setText("You got it right!");
-
                 }else{
                     chkResponse.setText("You got it wrong.");
                 }
