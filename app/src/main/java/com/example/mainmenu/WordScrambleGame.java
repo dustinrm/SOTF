@@ -18,10 +18,10 @@ public class WordScrambleGame implements GameInterface {
     TextGameFileInterface textGameFileInterface;
     //Constructor
     public WordScrambleGame(Context inputContext){
-        getFileNames().add("Animals.txt");
-        getFileNames().add("Fruits.txt");
-        getFileNames().add("Instruments.txt");
-        getFileNames().add("Sports.txt");
+        getFileNames().add("WordScrambleGame/Animals.txt");
+        getFileNames().add("WordScrambleGame/Fruits.txt");
+        getFileNames().add("WordScrambleGame/Instruments.txt");
+        getFileNames().add("WordScrambleGame/Sports.txt");
         this.fileName = getFileNames().get(random.nextInt(getFileNames().size()));
         this.textGameFileInterface = new TextGameFileInterface(inputContext);
         this.words = textGameFileInterface.parseFile(fileName);
