@@ -20,6 +20,6 @@ public class UserProfile {
             this.hiddenRating = 0;
         }else this.hiddenRating -= ratingChange;
     }
-    public void getUsername{return this.username}
-    public void getPassword{return this.password}
+    public String getUsername(){return this.username;}
+    public String getPassword(){return this.password;}
 }
